@@ -3,10 +3,8 @@ import sklearn
 import pickle
 
 # Manually opening and closing the file
-with open('/Users/macvision/PycharmProjects/Ecode_Code_and_GUIS/EcodeCamp_Internships/failure (1).pkl', 'rb') as f:
-    model = pickle.load(f)
-
-print("Model loaded successfully.")
+with open('failure.pkl', 'rb') as file:
+    model = pickle.load(file)
 
 
 
