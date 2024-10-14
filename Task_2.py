@@ -3,7 +3,20 @@ import numpy as np
 import matplotlib.pyplot as plt
 from tensorflow.keras.models import load_model
 import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
+import base64
+
+
+def get_base64_image(image_path):
+    try:
+        with open(image_path, "rb") as image_file:
+            encoded_string = base64.b64encode(image_file.read()).decode()
+        return encoded_string
+    except Exception as e:
+        st.error(f"Error loading image: {e}")
+        return None
+
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 # Path to the saved model (ensure it's a .h5 file)
 MODEL_PATH = "saved_model.h5"
@@ -11,6 +24,24 @@ MODEL_PATH = "saved_model.h5"
 
 # Streamlit App
 def main():
+    # Set a background image
+    image_path = 'img.jpeg'  # Replace with the path to your local image
+    img_base64 = get_base64_image(image_path)
+
+    if img_base64:  # Check if image was loaded successfully
+        st.markdown(
+            f"""
+                <style>
+                .stApp {{
+                    background-image: url("data:image/jpeg;base64,{img_base64}");
+                    background-size: cover;
+                }}
+                </style>
+                """,
+            unsafe_allow_html=True
+        )
+    else:
+        st.warning("Background image could not be loaded.")
     st.title("Stock Price Prediction App")
 
     # Load the saved .h5 model
