@@ -1,7 +1,9 @@
 import streamlit as st
 import pandas as pd
-import pickle 
+import pickle
+import base64
 
+# Function to load a local image and convert it to base64
 def get_base64_image(image_path):
     try:
         with open(image_path, "rb") as image_file:
@@ -42,8 +44,8 @@ def preprocess_input(Age, Sex, Fare, Pclass, Sibsp, Parch, Embarked, feature_nam
 
 
 # Streamlit UI
-def main(): 
-     # Set a background image
+def main():
+    # Set a background image
     image_path = '787014.jpg'  # Replace with the path to your local image
     img_base64 = get_base64_image(image_path)
 
@@ -61,6 +63,7 @@ def main():
         )
     else:
         st.warning("Background image could not be loaded.")
+
     st.title("Titanic Survival Prediction")
 
     st.write("Enter the following information to predict survival on the Titanic:")
