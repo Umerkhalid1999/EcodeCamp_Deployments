@@ -44,7 +44,7 @@ def preprocess_input(Age, Sex, Fare, Pclass, Sibsp, Parch, Embarked, feature_nam
 # Streamlit UI
 def main(): 
      # Set a background image
-    image_path = '/Users/macvision/PycharmProjects/Ecode_Code_and_GUIS/EcodeCamp_Deployments/787014.jpg'  # Replace with the path to your local image
+    image_path = '787014.jpg'  # Replace with the path to your local image
     img_base64 = get_base64_image(image_path)
 
     if img_base64:  # Check if image was loaded successfully
