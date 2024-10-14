@@ -4,11 +4,11 @@ import pickle
 
 # Load the model, scaler, and feature names
 def load_model():
-    with open('/Users/macvision/PycharmProjects/Ecode_Code_and_GUIS/EcodeCamp_Deployments/titanic_model.pkl', 'rb') as model_file:
+    with open('titanic_model.pkl', 'rb') as model_file:
         model = pickle.load(model_file)
-    with open('/Users/macvision/PycharmProjects/Ecode_Code_and_GUIS/EcodeCamp_Deployments/scaler.pkl', 'rb') as scaler_file:
+    with open('scaler.pkl', 'rb') as scaler_file:
         scaler = pickle.load(scaler_file)
-    with open('/Users/macvision/PycharmProjects/Ecode_Code_and_GUIS/EcodeCamp_Deployments/feature_names.pkl', 'rb') as feature_file:
+    with open('feature_names.pkl', 'rb') as feature_file:
         feature_names = pickle.load(feature_file)
     return model, scaler, feature_names
 
