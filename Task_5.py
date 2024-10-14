@@ -13,11 +13,11 @@ def get_base64_image(image_path):
         return None
 
 # Load the model
-with open('/Users/macvision/PycharmProjects/Ecode_Code_and_GUIS/EcodeCamp_Deployments/failure.pkl', 'rb') as f:
+with open('failure.pkl', 'rb') as f:
     model = pickle.load(f)
 
 # Set a background image
-    image_path = '/Users/macvision/PycharmProjects/Ecode_Code_and_GUIS/EcodeCamp_Deployments/wp3592487.webp'  # Replace with the path to your local image
+    image_path = 'wp3592487.webp'  # Replace with the path to your local image
     img_base64 = get_base64_image(image_path)
 
     if img_base64:  # Check if image was loaded successfully
