@@ -1,6 +1,15 @@
 import streamlit as st
 import pandas as pd
-import pickle
+import pickle 
+
+def get_base64_image(image_path):
+    try:
+        with open(image_path, "rb") as image_file:
+            encoded_string = base64.b64encode(image_file.read()).decode()
+        return encoded_string
+    except Exception as e:
+        st.error(f"Error loading image: {e}")
+        return None
 
 # Load the model, scaler, and feature names
 def load_model():
@@ -33,7 +42,25 @@ def preprocess_input(Age, Sex, Fare, Pclass, Sibsp, Parch, Embarked, feature_nam
 
 
 # Streamlit UI
-def main():
+def main(): 
+     # Set a background image
+    image_path = '/Users/macvision/PycharmProjects/Ecode_Code_and_GUIS/EcodeCamp_Deployments/787014.jpg'  # Replace with the path to your local image
+    img_base64 = get_base64_image(image_path)
+
+    if img_base64:  # Check if image was loaded successfully
+        st.markdown(
+            f"""
+            <style>
+            .stApp {{
+                background-image: url("data:image/jpeg;base64,{img_base64}");
+                background-size: cover;
+            }}
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
+    else:
+        st.warning("Background image could not be loaded.")
     st.title("Titanic Survival Prediction")
 
     st.write("Enter the following information to predict survival on the Titanic:")
