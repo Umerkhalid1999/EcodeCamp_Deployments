@@ -21,6 +21,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 # Path to the saved model (ensure it's a .h5 file)
 MODEL_PATH = "saved_model.h5"
 
+
 # Streamlit App
 def main():
     # Set a background image
